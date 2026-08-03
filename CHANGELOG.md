@@ -1,3 +1,6 @@
+## 2.2.2.0
+* Updated tooltip utils to avoid moving a stale tooltip when tooltips are disabled
+
 ## 2.2.1.0
 * json filters bug fix
 
