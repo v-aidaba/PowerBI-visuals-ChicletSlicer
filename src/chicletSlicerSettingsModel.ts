@@ -547,7 +547,6 @@ export class TooltipsCardSettings extends SimpleCard {
     name: string = "tooltips";
     displayNameKey: string = "Visual_Tooltips";
     topLevelSlice = this.show;
-    slices = [];
 
     revertToDefaultDescriptors: [
         {
@@ -557,19 +556,12 @@ export class TooltipsCardSettings extends SimpleCard {
     ]
 }
 
-export class SlicerItemContainer extends SimpleCard {
+export class SlicerItemContainer {
     public marginTop: number = 0;
     public marginLeft: number = 0;
 }
 
-export class Margin extends SimpleCard {
-    public top: number = 50;
-    public bottom: number = 50;
-    public right: number = 50;
-    public left: number = 50;
-}
-
-export class HeaderText extends SimpleCard {
+export class HeaderText {
     public marginTop: number = 0;
     public marginLeft: number = 0;
 }
@@ -581,7 +573,6 @@ export class ChicletSlicerSettingsModel extends Model {
     imagesCardSettings = new ImagesCardSettings();
     tooltipsCardSettings = new TooltipsCardSettings();
     slicerItemContainer = new SlicerItemContainer();
-    margin = new Margin();
     headerText = new HeaderText();
 
     cards = [this.generalCardSettings, this.headerCardSettings, this.slicerTextCardSettings, this.imagesCardSettings, this.tooltipsCardSettings];

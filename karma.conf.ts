@@ -33,7 +33,9 @@ const path = require("path");
 const testRecursivePath = "test/visualTest.ts";
 const srcOriginalRecursivePath = "src/**/*.ts";
 
-process.env.CHROME_BIN = require("playwright").chromium.executablePath();
+if (!process.env.CHROME_BIN && process.platform === "linux") {
+    process.env.CHROME_BIN = require("playwright").chromium.executablePath();
+}
 
 module.exports = (config) => {
     config.set({
@@ -41,9 +43,13 @@ module.exports = (config) => {
         browserNoActivityTimeout: 100000,
         browsers: [process.env.CI ? "ChromeHeadlessNoSandbox" : "ChromeHeadless"],
         customLaunchers: {
+            ChromeHeadless: {
+                base: "Chrome",
+                flags: ["--headless", "--disable-gpu", "--remote-debugging-port=0"]
+            },
             ChromeHeadlessNoSandbox: {
-                base: "ChromeHeadless",
-                flags: ["--no-sandbox"]
+                base: "Chrome",
+                flags: ["--headless", "--disable-gpu", "--no-sandbox", "--remote-debugging-port=0"]
             }
         },
         colors: true,
