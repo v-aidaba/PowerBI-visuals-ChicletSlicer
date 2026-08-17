@@ -33,7 +33,7 @@ const path = require("path");
 const testRecursivePath = "test/visualTest.ts";
 const srcOriginalRecursivePath = "src/**/*.ts";
 
-if (!process.env.CHROME_BIN && process.platform === "linux") {
+if (!process.env.CHROME_BIN) {
     process.env.CHROME_BIN = require("playwright").chromium.executablePath();
 }
 
