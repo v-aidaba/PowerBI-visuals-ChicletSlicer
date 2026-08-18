@@ -41,15 +41,11 @@ module.exports = (config) => {
     config.set({
         mode: "development",
         browserNoActivityTimeout: 100000,
-        browsers: [process.env.CI ? "ChromeHeadlessNoSandbox" : "ChromeHeadless"],
+        browsers: ["ChromeHeadlessNoSandbox"],
         customLaunchers: {
-            ChromeHeadless: {
-                base: "Chrome",
-                flags: ["--headless", "--disable-gpu", "--remote-debugging-port=0"]
-            },
             ChromeHeadlessNoSandbox: {
                 base: "Chrome",
-                flags: ["--headless", "--disable-gpu", "--no-sandbox", "--remote-debugging-port=0"]
+                flags: ["--headless", "--no-sandbox"]
             }
         },
         colors: true,
